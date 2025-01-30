@@ -171,10 +171,10 @@ namespace BpMon
             }
         }
 
-        private const string m_clientId = "w2wiuxcapa9h4aa";
-        private const string m_clientSecret = "qwr5b1vj85s6dt6";
+        private const string m_clientId = "";
+        private const string m_clientSecret = "";
         // Fill in after granting access to the app (run this app once and then login to Dropbox). If you get an invalid_grant exception, make this empty string again and rebuild
-        private const string m_authorizationCode = "2FQCe93uLkAAAAAAAAAANEN0-H5gDTSQklmTZxJaIRs";///
+        private const string m_authorizationCode = "";
         private const string m_refreshTokenFileName = "RefreshToken.txt";
         // Should resolve to something like C:\Users\<user>\AppData\Local\Packages\<PackageFamilyName>\LocalCache\Local\BpMon. See Package.appxmanifest for PackageFamilyName
         private readonly string m_appDataFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BpMon");

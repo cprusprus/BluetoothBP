@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="BpMon.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BpMon"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="BpMon"
+    Activated="Window_Activated">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Width="100px" Height="50px" Text="Battery: " FontSize="20" TextAlignment="Center" />
+            <TextBlock x:Name="BatteryTextBlock" Width="100px" Height="50px" Text="" FontSize="20" TextAlignment="Center" />
+        </StackPanel>
+        <Button x:Name="StartButton" Width="200px" Height="100px" FontSize="40" Click="StartButton_Click" IsEnabled="False">Start</Button>
+        <TextBox x:Name="ReadingsTextBox" Width="300px" Height="300px" FontSize="20" TextWrapping="Wrap" />
+    </StackPanel>
+</Window>

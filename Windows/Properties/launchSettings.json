@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "BpMon (Package)": {
+      "commandName": "MsixPackage",
+      "remoteDebugEnabled": false,
+      "remoteDebugMachine": "computer3",
+      "authenticationMode": "None"
+    },
+    "BpMon (Unpackaged)": {
+      "commandName": "Project",
+      "workingDirectory": "c:\\temp",
+      "remoteDebugEnabled": true,
+      "remoteDebugMachine": "computer3",
+      "authenticationMode": "None"
+    }
+  }
+}

@@ -7,12 +7,13 @@ If you are not interested in Apple Health sync (which should sync with e.g. Lose
 Install-Package Dropbox.Api
 
 Goto https://www.dropbox.com/developers
-    Create apps
-    Scoped access
-    App folder
-    App name: BpMon
-    Permissions: files.metadata.write, files.content.write
-    Submit
+
+    - Create apps
+    - Scoped access
+    - App folder
+    - App name: BpMon
+    - Permissions: files.metadata.write, files.content.write
+    - Submit
 
 Then compile and run the app. It will launch a web page to authorize the app with Dropbox and give you an authorization code. Copy that authorization code into Dropbox\DropboxUploader.cs\m_authorizationCode and rebuild.
 Once you click on the Start button and take a blood pressure reading, you should now see in your Dropbox account an Apps/BpMon/bp.csv file containing the blood pressure reading which iOS Apple Health can import with a Shortcut.

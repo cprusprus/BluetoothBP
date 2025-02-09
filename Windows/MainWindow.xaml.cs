@@ -19,7 +19,6 @@ namespace BpMon
             if (m_firstActivaton)
             {                
                 m_firstActivaton = false;
-                BatteryTextBlock.Text = m_batteryPercentageRemaining.ToString() + "%";
                 StartButton.IsEnabled = true;
             }
         }
@@ -53,6 +52,8 @@ namespace BpMon
         {
             string bloodPressureReading = await m_BloodPressureMonitor.GetBloodPressureReadingAsync();
             ReadingsTextBox.Text = bloodPressureReading;
+            m_batteryPercentageRemaining = await m_BloodPressureMonitor.GetBatteryLevelAsync();
+            BatteryTextBlock.Text = m_batteryPercentageRemaining.ToString() + "%";
             m_BloodPressureMonitor.Disconnect();
             await UploadBpCsvToDropboxAsync();
             StartButton.Content = "Start";

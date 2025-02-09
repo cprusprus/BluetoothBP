@@ -28,6 +28,7 @@ namespace BpMon
             {
                 // Switch to using DropboxOAuth2Helper.GetAuthorizeUri(m_clientId) if it stops giving token_access_type=legacy in the future, which results in short lived tokens and no refresh token
                 var authorizeUri = new Uri($"https://www.dropbox.com/oauth2/authorize?response_type=code&client_id={m_clientId}&token_access_type=offline");
+                DeleteRefreshToken();
                 Process.Start(new ProcessStartInfo(authorizeUri.ToString()) { UseShellExecute = true });
                 return "";
             }
@@ -86,6 +87,15 @@ namespace BpMon
         {
             var filePath = Path.Combine(m_appDataFilePath, m_refreshTokenFileName);
             return File.Exists(filePath) ? File.ReadAllText(filePath) : null;
+        }
+
+        private void DeleteRefreshToken()
+        {
+            var filePath = Path.Combine(m_appDataFilePath, m_refreshTokenFileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
 
         public async Task<MemoryStream> CreateCsvMemoryStreamAsync(string[] headers, string[][] rows)

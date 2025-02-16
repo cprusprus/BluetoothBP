@@ -17,7 +17,7 @@ namespace BpMon
         private async void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
             if (m_firstActivaton)
-            {                
+            {
                 m_firstActivaton = false;
                 StartButton.IsEnabled = true;
             }
@@ -71,13 +71,13 @@ namespace BpMon
 
         private async Task UploadBpCsvToDropboxAsync()
         {
-            string[] headers = { "Date", "Systolic", "Diastolic" };     // TODO: Upload pulse measurement
-            string[][] rows = { new string[] {  DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss+00:00"), m_BloodPressureMonitor.m_bloodPressureReading.Systolic.ToString(), m_BloodPressureMonitor.m_bloodPressureReading.Diastolic.ToString() } };
-            var uploader = new DropboxUploader();           
-            string result = await uploader.UploadCsvFileAsync(headers, rows, m_dropboxFolderPath, m_dropboxFileName);
+            string[] headers = { "Date", "Systolic", "Diastolic", "Bpm" };
+            string[][] rows = { new string[] { DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss+00:00"), m_BloodPressureMonitor.m_bloodPressureReading.Systolic.ToString(), m_BloodPressureMonitor.m_bloodPressureReading.Diastolic.ToString(), m_BloodPressureMonitor.m_bloodPressureReading.PulseRate.ToString() } };
+            var uploader = new DropboxUploader();
+            string result = await uploader.UploadCsvFileAsync(headers, rows, m_dropboxFolderPath, m_dropboxBpFileName);
             if (result != "")
             {
-                ReadingsTextBox.Text += result;
+                ReadingsTextBox.Text += "\n" + result;
             }
         }
 
@@ -86,6 +86,6 @@ namespace BpMon
         private int m_batteryPercentageRemaining = 0;
         private Bluetooth.BloodPressureMonitor m_BloodPressureMonitor;
         string m_dropboxFolderPath = "";        // Dropbox will scope to /Apps/BpMon so no need to specify a subfolder
-        string m_dropboxFileName = "bp.csv";
+        string m_dropboxBpFileName = "bp.csv";
     }
 }

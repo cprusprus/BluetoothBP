@@ -136,8 +136,8 @@ namespace BpMon
             }
             if (timeStampFileExists)
             {
-                var deleteResult = client.Files.DeleteV2Async(dropboxFolderPath + "/" + dropboxFileName + ".timestamp.txt");
-                Debug.WriteLine($"Deleted: {deleteResult.Result.Metadata.Name}");
+                var deleteResult = await client.Files.DeleteV2Async(dropboxFolderPath + "/" + dropboxFileName + ".timestamp.txt");
+                Debug.WriteLine($"Deleted: {deleteResult.Metadata.Name}");
             }
         }
 
